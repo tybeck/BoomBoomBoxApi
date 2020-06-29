@@ -1,0 +1,78 @@
+{
+  "name": "club-board",
+  "version": "0.1.0",
+  "description": "modern club member manager",
+  "author": "Yuze Fu<i@xfox.me>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "ts-node src/main.ts",
+    "start:dev": "tsnd src/main",
+    "start:debug": "tsnd --inspect=5858 src/main",
+    "start:prod": "node dist/main.js",
+    "lint": "eslint src/* --ext .js,.ts",
+    "test": "ava",
+    "test:watch": "ava --watch",
+    "predb": "tsc && tspath --preserve -f",
+    "clean": "rm -rf dist",
+    "compile": "tsc && tspath --preserve -f",
+    "clean-compile": "rm -rf dist && tsc && tspath --preserve -f"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.10.7",
+    "@nestjs/core": "^6.10.7",
+    "@nestjs/platform-express": "^6.10.7",
+    "@nestjs/typeorm": "^6.2.0",
+    "envalid": "^6.0.0",
+    "globby": "^10.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.17.1",
+    "pg": "^7.14.0",
+    "pino": "^5.14.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3",
+    "tslib": "^1.10.0",
+    "typeorm": "^0.2.21",
+    "typescript": "^3.7.3"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^6.10.7",
+    "@types/express": "^4.17.2",
+    "@types/globby": "^9.1.0",
+    "@types/jsonwebtoken": "^8.3.5",
+    "@types/node": "^12.12.14",
+    "@types/pino": "^5.14.0",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "ava": "2.4.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "nyc": "^14.1.1",
+    "pino-pretty": "^3.5.0",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-node": "8.5.4",
+    "ts-node-dev": "^1.0.0-pre.44"
+  },
+  "nodemonConfig": {
+    "ext": "ts,hbs"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && yarn lint"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md,ts}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "all"
+  }
+}
