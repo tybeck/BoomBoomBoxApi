@@ -11,11 +11,14 @@ export class AppService {
     Pin.writeSync(1);
     return new Promise(resolve => {
       setTimeout(() => {
-        Pin.writeSync(0);
-        setTimeout(() => {
-          Pin.writeSync(1);
-          resolve();
-        }, 1500);
+        Pin
+          .write(0)
+          .then(() => {
+            setTimeout(() => {
+              Pin.writeSync(1);
+              resolve();
+            }, 1000);
+          });
       }, 100);
     });
   }
