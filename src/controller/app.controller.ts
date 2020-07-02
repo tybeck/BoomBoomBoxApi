@@ -6,7 +6,7 @@ export class SessionController {
   constructor(private appService: AppService) {}
 
   @Get("/start")
-  public async start(): Promise<void> {
+  public async start(): Promise<any> {
     return await this.appService.beginSequence();
   }
 }
