@@ -3,5 +3,5 @@ const Pin = new Gpio(2, 'out');
 
 export default function () {
   Pin.setActiveLow(false);
-  Pin.writeSync(0);
+  Pin.writeSync(1);
 }
