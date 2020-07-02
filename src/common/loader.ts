@@ -1,5 +1,5 @@
-import { sync as glob } from "globby";
-import { join } from "path";
+import { sync as glob } from 'globby';
+import { join } from 'path';
 
 export const requireClassesSync = (
   base: string,
@@ -8,13 +8,13 @@ export const requireClassesSync = (
   glob(
     patterns.map(p => join(base, p)),
     {
-      expandDirectories: ["*.js", "*.ts"],
+      expandDirectories: ['*.js', '*.ts'],
     },
   )
     .map(file => require(file))
     .map((e: object) =>
       Object.values(e).filter(
-        o => typeof o === "function",
+        o => typeof o === 'function',
         // && Reflect.getMetadata(PATH_METADATA, o) !== undefined,
       ),
     )
