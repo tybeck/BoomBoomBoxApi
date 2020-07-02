@@ -8,14 +8,13 @@ export class AppService {
   constructor() {}
 
   public async beginSequence() {
-    Pin.writeSync(1);
     return new Promise(resolve => {
       setTimeout(() => {
         Pin
-          .write(0)
+          .write(1)
           .then(() => {
             setTimeout(() => {
-              Pin.writeSync(1);
+              Pin.writeSync(0);
               resolve();
             }, 1000);
           });
