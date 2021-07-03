@@ -1,12 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from '../service/app.service';
+import { Controller, Get, Param } from "@nestjs/common";
 
-@Controller('/boom-boom-box/api')
-export class SessionController {
-  constructor(private appService: AppService) {}
+import { PinService } from "../service/pin.service";
 
-  @Get('/start')
-  public async start(): Promise<any> {
-    return await this.appService.beginSequence();
+@Controller("/boom-boom-box/api")
+export class AppController {
+  constructor(private pin: PinService) {}
+
+  @Get("/fire/:id")
+  public async fire(@Param("id") id: number): Promise<any> {
+    return await this.pin.fire(id);
   }
 }
